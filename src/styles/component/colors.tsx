@@ -2,9 +2,15 @@ const white = '#FFFFFF';
 
 const oranye = '#E85535';
 
-const blue = '#054E84';
+const blue = {
+  100: '#0A3869',
+  200: '#4A78D9',
+  300: '#6A9AF5',
+  400: "#DEE9F6",
+}
+
 const red = '#FA440A';
-const black = '#341F16';
+const black = '#000000';
 const cream = '#F0E1CC';
 const whiteCream = '#F9F6F0';
 

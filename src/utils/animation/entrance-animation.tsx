@@ -1,6 +1,5 @@
 import { Box, Flex, useDimensions, useMediaQuery } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { duration } from "moment";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";
 import { useIsMobile } from "../hooks/useIsMobile";

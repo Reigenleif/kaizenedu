@@ -3,7 +3,7 @@ import type { ComponentStyleConfig } from "@chakra-ui/react";
 
 const defaultButton: SystemStyleFunction = () => {
   return {
-    color: "black",
+    color: "blue.100",
     borderRadius: "20",
     bg: "white",
     border: "1px solid black",
@@ -28,21 +28,17 @@ const defaultButton: SystemStyleFunction = () => {
 
 const outlineButton: SystemStyleFunction = () => {
   return {
-    color: "black",
-    borderWidth: "2px",
-    borderColor: "black",
-    bg: `gray.600`,
-    borderRadius: "12",
+    color: "blue.100",
+    borderWidth: "3px",
+    borderColor: "blue.100",
+    borderRadius: "40",
     _hover: {
-      bg: "gray.600",
-      shadow: "0 0 24px rgba(255,200,4,0.6)",
-      _disabled: {
-        bg: "transparent",
-        shadow: "none",
-      },
+      color: "blue.200",
+      borderColor: "blue.200",
+      bg: "transparent",
     },
     _active: {
-      bg: "rgba(47, 46, 46, 0.6)",
+      bg: "transparent",
       shadow: "none",
     },
     _disabled: {
@@ -79,13 +75,13 @@ const monoBlackButton: SystemStyleFunction = () => {
 const blueButton: SystemStyleFunction = () => {
   return {
     color: "white",
-    bg: "blue",
+    bg: "blue.100",
     borderRadius: "12",
     _hover: {
       bg: "white",
-      color: "blue",
+      color: "blue.100",
       border: "1px solid",
-      borderColor: "blue",
+      borderColor: "blue.100",
       _disabled: {
         bg: "gray.400",
         shadow: "none",
@@ -164,17 +160,15 @@ const monoOutlineButton: SystemStyleFunction = () => {
   };
 };
 
-const noBorderButton: SystemStyleFunction = () => {
+const ghostButton: SystemStyleFunction = () => {
   return {
     color: "black",
     bg: `transparent`,
     borderRadius: "12",
+    fontWeight: "200",
     _hover: {
-      color: "gray.600",
-    },
-    _active: {
-      shadow: "none",
-      border: "none",
+      color: "rgba(100,100,155,0.8)",
+      bg: "transparent",
     },
     _disabled: {
       color: "gray.500",
@@ -184,16 +178,54 @@ const noBorderButton: SystemStyleFunction = () => {
   };
 };
 
+const ghostBlueButton: SystemStyleFunction = () => {
+  return {
+    color: "blue.100",
+    bg: `transparent`,
+    borderRadius: "12",
+    _hover: {
+      color: "rgba(150,150,200,1)",
+      bg: "transparent",
+    },
+    _disabled: {
+      color: "gray.500",
+      bg: "transparent",
+      borderColor: "gray.400",
+    },
+  };
+}
+
+const fillButton: SystemStyleFunction = () => {
+  return {
+    color: "white",
+    bg: "blue.100",
+    borderRadius: "40",
+    border: "3px solid",
+    borderColor: "blue.100",
+    
+    _hover: {
+      bg: "blue.200",
+      borderColor: "blue.200",
+      _disabled: {
+        bg: "gray.400",
+        shadow: "none",
+      },
+    },
+  };
+}
+
 export const Button: ComponentStyleConfig = {
   variants: {
     solid: defaultButton,
     outline: outlineButton,
+    fill: fillButton,
     "mono-black": monoBlackButton,
     "mono-gray": monoGrayButton,
     "mono-outline": monoOutlineButton,
-    "no-border": noBorderButton,
     blue: blueButton,
     "salmon-outline": salmonOutlineButton,
+    ghost: ghostButton,
+    "ghost-blue.100": ghostBlueButton,
   },
   defaultProps: {
     variant: "solid",

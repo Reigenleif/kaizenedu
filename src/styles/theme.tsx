@@ -7,21 +7,25 @@ import { Textarea } from './component/textarea';
 
 const theme = extendTheme({
   fonts: {
-    heading: 'Alsans',
-    body: 'ebgar'
+    heading: 'Inter',
+
+    body: 'Inter'
   },
   colors,
   styles: {
     global: {
       body: {
-        color: 'black'
+        color: 'black',
+
       },
       '*': {
         '&::-webkit-scrollbar': {
           w: '2',
-          h: '1.5'
+          h: '1.5',
         },
-      }
+        
+      },
+
     }
   },
   components: {
@@ -29,6 +33,14 @@ const theme = extendTheme({
     Input,
     Table,
     Textarea
+  },
+  breakpoints: {
+    base: "0px",
+    sm: "968px",
+    md: "1100px",
+    lg: "1200px",
+    xl: "1300px",
+    "2xl": "1400px",
   }
 });
 
