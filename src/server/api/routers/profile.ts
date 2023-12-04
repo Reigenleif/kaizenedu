@@ -23,7 +23,7 @@ export const profileRouter = createTRPCRouter({
       name: session.user.name,
       email: session.user.email,
       role: session.user.role,
-      imageUrl: user ? user.imageUrl : ""
+      image: user ? user.image: ""
     };
 
     return profile;
@@ -33,6 +33,7 @@ export const profileRouter = createTRPCRouter({
       z.object({
         name: z.string().min(1).optional(),
         email: z.string().email().optional(),
+        image: z.string().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -49,8 +50,9 @@ export const profileRouter = createTRPCRouter({
       const updatedUser = await prisma.user.update({
         where: { id: session.user.id },
         data: {
-          name: input.name || user.name,
-          email: input.email || user.email,
+          name: input.name ?? user.name,
+          email: input.email ?? user.email,
+          image: input.image ?? user.image,
         },
       });
 
