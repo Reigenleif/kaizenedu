@@ -29,6 +29,12 @@ interface FavouriteVideoCardProps {
   favourited: boolean;
 }
 
+interface ServicesCardProps {
+  title: string;
+  description: string;
+  imgSrc: string;
+}
+
 const FAVOURITE_VIDEOS: FavouriteVideoCardProps[] = [
   {
     title: "Persiapan UAS Ekonomi Teknik",
@@ -73,6 +79,33 @@ const FAVOURITE_PLAYLISTS: FavouritePlaylistCardProps[] = [
     title: "Termodinamika",
     description: "(15 Videos)",
     imgSrc: "/home/favpl/termo.webp",
+  },
+];
+
+const services: ServicesCardProps[] = [
+  {
+    title: "VIDEO",
+    description:
+      "Video pembelajaran yang mencakup baik materi maupun pembahasan soal",
+    imgSrc: "/home/services/video.webp",
+  },
+  {
+    title: "LIVE STREAMING",
+    description:
+      "Sesi pembahasan soal secara live streaming terutama mendekati ujian",
+    imgSrc: "/home/services/live-streaming.webp",
+  },
+  {
+    title: "COMMUNITY",
+    description:
+      "Forum  bagi para member untuk berdiskusi terkait soal dan mata kuliah",
+    imgSrc: "/home/services/community.webp",
+  },
+  {
+    title: "FILE MATERI",
+    description:
+      "Kumpulan file materi dan pembahasan ujian dari tahun-tahun sebelumnya",
+    imgSrc: "/home/services/file-materi.webp",
   },
 ];
 
@@ -233,6 +266,126 @@ export default function Home() {
               </StaggeredSlide>
             </FlexResponsive>
           </FadeIn>
+
+          {/* TESTIMONIAL SECTION */}
+          <Slide from="right" duration={0.5}>
+            <Flex
+              justifyContent="center"
+              flexWrap="wrap"
+              flexDir={["row", "row-reverse"]}
+              gap="3em"
+              alignItems="flex-end"
+            >
+              <Flex flexDir="column" w="min(30em, 90%)" gap="1.2em">
+                <Text color="blue.100">Testimonials</Text>
+                <Text fontWeight="bold" fontSize="3xl">
+                  What Our Members Say About Us
+                </Text>
+                <Text>
+                  “Sebelum langganan Kaizen Education, aku sering bingung harus
+                  cari bahan belajar untuk beberapa mata kuliah. Sekarang, aku
+                  jadi bisa belajar secara efektif dan efisien berkat
+                  video-video dan fitur-fitur Kaizen yang bermanfaat banget!”
+                </Text>
+                <Flex justifyContent="space-between">
+                  <Flex>
+                    <Img
+                      src="/home/comment/nando.webp"
+                      objectFit="cover"
+                      w="55px"
+                      h="50px"
+                      borderRadius="50%"
+                      border="3px solid white"
+                    />
+                    <Img
+                      src="/home/comment/mike.webp"
+                      objectFit="cover"
+                      w="50px"
+                      h="50px"
+                      borderRadius="50%"
+                      border="3px solid white"
+                      ml="-25px"
+                    />
+                    <Img
+                      src="/home/comment/jems.webp"
+                      objectFit="cover"
+                      w="50px"
+                      h="50px"
+                      borderRadius="50%"
+                      border="3px solid white"
+                      ml="-25px"
+                    />
+                  </Flex>
+                  <Flex flexDir="column" w="70%" gap="0.5em">
+                    <Text fontWeight="bold" textAlign="left" w="100%">
+                      Members Feedback
+                    </Text>
+                    <Flex gap="1.5em">
+                      <AiFillStar size="1.5em" color="yellow" />
+                      <Text>4.9</Text>
+                      <Text opacity="80%">(76 Reviews)</Text>
+                    </Flex>
+                  </Flex>
+                </Flex>
+              </Flex>
+
+              <Flex h="35em" position="relative" w="min(30em,90%)">
+                <Box
+                  bg="blue.100"
+                  w="100%"
+                  h="10em"
+                  borderRadius="60px 60px 30px 30px"
+                  pos="absolute"
+                  top="25em"
+                  zIndex="-1"
+                />
+                <Img src="/home/dhiaz-big.webp" w="100%" ml="3em" />
+              </Flex>
+            </Flex>
+          </Slide>
+
+          {/* SERVICES SECTION */}
+          <FadeIn>
+            <Flex flexDir={["column", "row"]} w="min(95em,100%)" mt="12em">
+              <Flex flexDir="column" w="50%" gap="0.5em">
+                <Text color="blue.100">Our Story & Services</Text>
+                <Text fontWeight="bold" fontSize="3xl">
+                  Our Education Journey And Services
+                </Text>
+                <Text>
+                  Menjadi mahasiswa yang seringkali resah akan keterbatasan
+                  sumber belajar bersamaan dengan tuntutan capaian profil yang
+                  tinggi, khususnya ketika berada pada jurusan, mendorong kami
+                  untuk mendirikan Kaizen.edu yang merupakan platform
+                  pembelajaran berbasis web sehingga mahasiswa mampu mengakses
+                  materi kuliah secara fleksibel, mengurangi tekanan belajar
+                  yang berlebihan dengan fitur yang beragam sehingga
+                  mengakomodir berbagai gaya belajar yang berbeda di antara
+                  mahasiswa dan mampu menarik minat mahasiswa, menyokong
+                  partisipasi dan komitmen mahasiswa dalam pembelajaran.
+                </Text>
+                <Button
+                  color="white"
+                  bg="blue.100"
+                  _hover={{ boxShadow: "" }}
+                  w={["100%", "10em"]}
+                >
+                  Join Now
+                </Button>
+              </Flex>
+              <Flex flexWrap="wrap" w="50%" gap="1em" py="2em" justifyContent="center">
+                {services.map((service, index) => (
+                  <ServicesCard
+                    title={service.title}
+                    description={service.description}
+                    imgSrc={service.imgSrc}
+                    key={index}
+                  />
+                ))}
+              </Flex>
+            </Flex>
+            <Flex></Flex>
+          </FadeIn>
         </Flex>
       </PublicLayout>
     </>
@@ -361,11 +514,10 @@ const FavouriteVideoCard = ({
           alignItems="center"
           justifyContent="center"
           mx={["0", "auto"]}
-          
         >
           <Img src={imgSrc} h="6em" />
         </Flex>
-        <Flex flexDir="column" gap="0.5em" w={["60%", "auto"]}  mt="1em">
+        <Flex flexDir="column" gap="0.5em" w={["60%", "auto"]} mt="1em">
           <Text fontWeight="bold" textAlign="center" w="100%">
             {title}
           </Text>
@@ -374,6 +526,34 @@ const FavouriteVideoCard = ({
           </Text>
         </Flex>
       </Flex>
+    </Flex>
+  );
+};
+
+const ServicesCard = ({ title, description, imgSrc }: ServicesCardProps) => {
+  return (
+    <Flex
+      borderRadius="30px"
+      background="#FFF"
+      boxShadow="7px 12px 43px 0px rgba(0, 0, 0, 0.14)"
+      p="1em"
+      flexDir="column"
+      alignItems="center"
+      w="min(17em,100%)"
+      h="17em"
+      transition="transform 0.3s ease-in-out"
+      cursor="pointer"
+      _hover={{
+        transform: "scale(1.05)",
+      }}
+    >
+      <Img src={imgSrc} w="5em" h="5em" color="blue.100" />
+      <Text fontWeight="bold" fontSize="1.5em" mt="1em">
+        {title}
+      </Text>
+      <Text textAlign="center" mt="1em" color="blue.100" fontSize="sm">
+        {description}
+      </Text>
     </Flex>
   );
 };

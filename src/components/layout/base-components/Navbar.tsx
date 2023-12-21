@@ -86,10 +86,9 @@ const ButtonGroupDesktop = ({ session }: { session?: Session }) => {
                 {productDisclosure.isOpen ? "▲" : "▼"}
               </Text>
             </MenuButton>
-            <MenuList as={Flex} flexDir="column" gap="1em" p="1em">
-              <Button onClick={() => console.log("clicked")}>Product 1</Button>
-              <Button onClick={() => console.log("clicked")}>Product 2</Button>
-              <Button onClick={() => console.log("clicked")}>Product 3</Button>
+            <MenuList as={Flex} flexDir="column" gap="1em" p="1em" border="1px solid rgba(0,0,0,0.1)">
+              <Button onClick={() => console.log("clicked")} variant="ghost">Video</Button>
+              <Button onClick={() => console.log("clicked")} variant="ghost">Kuis</Button>
             </MenuList>
           </Menu>
           <Menu isOpen={membershipDisclosure.isOpen}>
@@ -104,15 +103,15 @@ const ButtonGroupDesktop = ({ session }: { session?: Session }) => {
                 {membershipDisclosure.isOpen ? "▲" : "▼"}
               </Text>
             </MenuButton>
-            <MenuList as={Flex} flexDir="column" gap="1em" p="1em">
-              <Button onClick={() => console.log("clicked")}>
-                Membership 1
+            <MenuList as={Flex} flexDir="column" p="1em" border="1px solid rgba(0,0,0,0.1)">
+              <Button onClick={() => console.log("clicked")} variant="ghost">
+                Kai
               </Button>
-              <Button onClick={() => console.log("clicked")}>
-                Membership 2
+              <Button onClick={() => console.log("clicked")} variant="ghost">
+                Zen
               </Button>
-              <Button onClick={() => console.log("clicked")}>
-                Membership 3
+              <Button onClick={() => console.log("clicked")} variant="ghost">
+                Edu
               </Button>
             </MenuList>
           </Menu>
