@@ -26,25 +26,13 @@ export const Footer = () => {
       flexDir={isMobile ? "column" : undefined}
     >
       <Flex flexDir="column" alignItems={["center", "flex-start"]}>
-        <Img src="main-icon.webp" h="3em" mt="2em" />
+        <Img src="/main-icon.webp" h="3em" mt="2em" />
         <Text textAlign="justify" w="min(40%,50em)" mt="3em" fontWeight="light">
           An education platform founded to help students be better continuously.
         </Text>
       </Flex>
       <Flex h="100%" gap="4em" flexDir={["column", "row"]} mt="2em">
-        <Flex
-          flexDir="column"
-          alignItems={["center", "flex-start"]}
-          gap="1.5em"
-          pl="0.8em"
-        >
-          <Text fontWeight="bold" mb="1em">
-            Useful Links
-          </Text>
-          <LinkBtn text="About Us" />
-          <LinkBtn text="Promotion" />
-          <LinkBtn text="FAQ" />
-        </Flex>
+        
         <Flex
           flexDir="column"
           alignItems={["center", "flex-start"]}

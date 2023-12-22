@@ -93,3 +93,35 @@ model ParticipantData {
 
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+// Video Models
+model Playlist {
+    id String @id @default(cuid())
+
+    name String
+    description String?
+    isPublic Boolean @default(false)
+
+    videos Video[]
+}
+
+model Video {
+    id String @id @default(cuid())
+
+    title String
+    description String?
+    url String
+    thumbnail String?
+    isPublic Boolean @default(false)
+    uploadedAt DateTime @default(now())
+    viewsCount Int @default(0)
+    likesCount Int @default(0)
+    dislikesCount Int @default(0)
+
+    storageObjectId String?
+
+    playlistId String?
+
+    playlist Playlist? @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+}
+

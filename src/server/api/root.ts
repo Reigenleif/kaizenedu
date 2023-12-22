@@ -3,6 +3,8 @@ import { createTRPCRouter } from "~/server/api/trpc";
 import { userRouter } from "./routers/user";
 import { storageRouter } from "./routers/storage";
 import { profileRouter } from "./routers/profile";
+import { visitorPlaylistRouter } from "./routers/playlist/visitor";
+import { visitorVideoRouter } from "./routers/video/visitor";
 
 /**
  * This is the primary router for your server.
@@ -14,6 +16,12 @@ export const appRouter = createTRPCRouter({
   user: userRouter,
   storage: storageRouter,
   profile: profileRouter,
+  playlist: createTRPCRouter({
+    visitor: visitorPlaylistRouter,
+  }),
+  video: createTRPCRouter({
+    visitor: visitorVideoRouter,
+  }),
 });
 
 // export type definition of API

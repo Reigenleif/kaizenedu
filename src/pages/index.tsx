@@ -129,11 +129,11 @@ const ZahraBig = () => {
       />
       <Img
         src="/zahra.png"
-        w="29em"
+        w={["100%","29em"]}
         h="29em"
         pos="absolute"
         zIndex="-2"
-        left="calc(50% - 14.5em)"
+        left={["","calc(50% - 14.5em)"]}
         top="0"
       />
       <Flex pos="absolute" bottom="0" w="100%">
@@ -167,7 +167,7 @@ export default function Home() {
   return (
     <>
       <PublicLayout>
-        <Flex flexDir="column" px="4em">
+        <Flex flexDir="column" px={["1em","4em"]}>
           {/* FRONT SECTION */}
           <Slide from="left" duration={0.5}>
             <FlexResponsive pb="3em">
@@ -189,7 +189,7 @@ export default function Home() {
                 <Text fontSize="1em" color="blue.100">
                   #ContinuousBetterment #ImproveEveryday
                 </Text>
-                <Flex mt="1em" px="3em" gap="1em">
+                <Flex mt="1em" px="3em" gap="1em" flexDir={["column","row"]}>
                   <Button
                     variant="fill"
                     fontSize="2xl"
@@ -347,7 +347,7 @@ export default function Home() {
           {/* SERVICES SECTION */}
           <FadeIn>
             <Flex flexDir={["column", "row"]} w="min(95em,100%)" mt="12em">
-              <Flex flexDir="column" w="50%" gap="0.5em">
+              <Flex flexDir="column" w={["100%","50%"]} gap="0.5em">
                 <Text color="blue.100">Our Story & Services</Text>
                 <Text fontWeight="bold" fontSize="3xl">
                   Our Education Journey And Services
@@ -373,7 +373,7 @@ export default function Home() {
                   Join Now
                 </Button>
               </Flex>
-              <Flex flexWrap="wrap" w="50%" gap="1em" py="2em" justifyContent="center">
+              <Flex flexWrap="wrap" w={["100%","50%"]} gap="1em" py="2em" justifyContent="center">
                 {services.map((service, index) => (
                   <ServicesCard
                     title={service.title}
@@ -401,7 +401,7 @@ const FavouritePlaylistCard = ({
 
   return (
     <Flex
-      w={["70%", "15em"]}
+      w={["95%", "15em"]}
       h="15em"
       flexDir={["row", "column"]}
       borderRadius="20"

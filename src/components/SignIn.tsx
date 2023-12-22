@@ -65,7 +65,7 @@ export const SignIn = ({ csrfToken }: SignInProps) => {
           <Text textAlign="center">Sign In</Text>
           <form onSubmit={onSignIn}>
             <FormControl>
-              <Input
+              {/* <Input
                 mt="1em"
                 w="100%"
                 value={emailInput}
@@ -81,18 +81,18 @@ export const SignIn = ({ csrfToken }: SignInProps) => {
                 type="password"
                 onChange={passwordChangeHandler}
                 placeholder="Password"
-              />
+              /> */}
 
               <Flex w="100%" flexDir="column" mt="1em">
-                <Button type="submit" w="50%" m="auto">
+                {/* <Button type="submit" w="50%" m="auto">
                   Sign In with Email
-                </Button>
+                </Button> */}
                 <Button m="auto" mt="1em" w="50%" onClick={googleSignIn}>
                   Sign In with Google
                 </Button>
               </Flex>
 
-              <Flex pos="relative" p="10" alignItems="center">
+              {/* <Flex pos="relative" p="10" alignItems="center">
                 <Divider color="black" />
                 <AbsoluteCenter
                   bg="white"
@@ -107,10 +107,9 @@ export const SignIn = ({ csrfToken }: SignInProps) => {
                 <Button onClick={() => router.push("/signup")} w="50%" m="auto">
                   Sign Up
                 </Button>
-              </Flex>
+              </Flex> */}
             </FormControl>
           </form>
-          {session ? <Text>Logged in as {session.user.email}</Text> : <Text>Not logged in</Text>}
         </Flex>
       </Flex>
   );

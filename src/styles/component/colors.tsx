@@ -20,6 +20,7 @@ const brown = {
 };
 
 const gray = {
+  100: '#D9D9D9',
   200: '#F9F9F9',
   300: '#BFBFBF',
   400: '#9B9B9B',

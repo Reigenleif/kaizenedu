@@ -22,6 +22,7 @@ import {
   MdSearch,
   MdReorder,
 } from "react-icons/md";
+import { SignInBtn } from "~/components/SignInBtn";
 import { FadeIn } from "~/utils/animation/entrance-animation";
 import { useHoverMenu } from "~/utils/hooks/useHoverMenu";
 import { useIsMobile } from "~/utils/hooks/useIsMobile";
@@ -44,7 +45,7 @@ export const Navbar = ({ type }: NavbarProps) => {
       mb="1em"
     >
       <Img
-        src="main-icon.webp"
+        src="/main-icon.webp"
         alt="main icon"
         h="3em"
         ml="2em"
@@ -61,6 +62,8 @@ export const Navbar = ({ type }: NavbarProps) => {
 };
 
 const ButtonGroupDesktop = ({ session }: { session?: Session }) => {
+  const { push } = useRouter();
+
   const productDisclosure = useDisclosure();
   const membershipDisclosure = useDisclosure();
 
@@ -86,9 +89,19 @@ const ButtonGroupDesktop = ({ session }: { session?: Session }) => {
                 {productDisclosure.isOpen ? "▲" : "▼"}
               </Text>
             </MenuButton>
-            <MenuList as={Flex} flexDir="column" gap="1em" p="1em" border="1px solid rgba(0,0,0,0.1)">
-              <Button onClick={() => console.log("clicked")} variant="ghost">Video</Button>
-              <Button onClick={() => console.log("clicked")} variant="ghost">Kuis</Button>
+            <MenuList
+              as={Flex}
+              flexDir="column"
+              gap="1em"
+              p="1em"
+              border="1px solid rgba(0,0,0,0.1)"
+            >
+              <Button onClick={() => push("/playlists")} variant="ghost">
+                Video
+              </Button>
+              <Button onClick={() => console.log("clicked")} variant="ghost">
+                Kuis
+              </Button>
             </MenuList>
           </Menu>
           <Menu isOpen={membershipDisclosure.isOpen}>
@@ -103,20 +116,29 @@ const ButtonGroupDesktop = ({ session }: { session?: Session }) => {
                 {membershipDisclosure.isOpen ? "▲" : "▼"}
               </Text>
             </MenuButton>
-            <MenuList as={Flex} flexDir="column" p="1em" border="1px solid rgba(0,0,0,0.1)">
-              <Button onClick={() => console.log("clicked")} variant="ghost">
+            <MenuList
+              as={Flex}
+              flexDir="column"
+              p="1em"
+              border="1px solid rgba(0,0,0,0.1)"
+            >
+              <Button onClick={() => push("membership")} variant="ghost">
                 Kai
               </Button>
-              <Button onClick={() => console.log("clicked")} variant="ghost">
+              <Button onClick={() => push("membership")} variant="ghost">
                 Zen
               </Button>
-              <Button onClick={() => console.log("clicked")} variant="ghost">
+              <Button onClick={() => push("membership")} variant="ghost">
                 Edu
               </Button>
             </MenuList>
           </Menu>
-          <Button variant="ghost">Community</Button>
-          <Button variant="ghost">Carrier</Button>
+          <Button variant="ghost" onClick={() => push("/community")}>
+            Community
+          </Button>
+          <Button variant="ghost" onClick={() => push("/carreer")}>
+            Carreer
+          </Button>
         </Flex>
       </FadeIn>
       <FadeIn>
@@ -125,11 +147,7 @@ const ButtonGroupDesktop = ({ session }: { session?: Session }) => {
             <MdSearch size="2em" />
           </Button>
           <Button variant="fill">Contact Us</Button>
-          {session ? (
-            <Text>Hello, {session.user.name?.split(" ")[0]} </Text>
-          ) : (
-            <Button variant="outline">Sign In</Button>
-          )}
+          <SignInBtn />
         </Flex>
       </FadeIn>
     </>
@@ -140,6 +158,8 @@ const ButtonGroupMobile = ({ session }: { session?: Session }) => {
   const productDisclosure = useDisclosure();
   const membershipDisclosure = useDisclosure();
   const groupDisclosure = useDisclosure();
+
+  const { push } = useRouter();
 
   const productToggle = () => {
     productDisclosure.onToggle();
@@ -178,23 +198,14 @@ const ButtonGroupMobile = ({ session }: { session?: Session }) => {
               </AccordionButton>
               <AccordionPanel w="100%">
                 <Flex flexDir="column">
-                  <Button
-                    onClick={() => console.log("clicked")}
-                    variant="ghost"
-                  >
-                    Product 1
+                  <Button onClick={() => push("/playlists")} variant="ghost">
+                    Video
                   </Button>
                   <Button
                     onClick={() => console.log("clicked")}
                     variant="ghost"
                   >
-                    Product 2
-                  </Button>
-                  <Button
-                    onClick={() => console.log("clicked")}
-                    variant="ghost"
-                  >
-                    Product 3
+                    Kuis
                   </Button>
                 </Flex>
               </AccordionPanel>
@@ -207,23 +218,14 @@ const ButtonGroupMobile = ({ session }: { session?: Session }) => {
               </AccordionButton>
               <AccordionPanel w="100%">
                 <Flex flexDir="column">
-                  <Button
-                    onClick={() => console.log("clicked")}
-                    variant="ghost"
-                  >
-                    Membership 1
+                  <Button onClick={() => push("membership")} variant="ghost">
+                    Kai
                   </Button>
-                  <Button
-                    onClick={() => console.log("clicked")}
-                    variant="ghost"
-                  >
-                    Membership 2
+                  <Button onClick={() => push("membership")} variant="ghost">
+                    Zen
                   </Button>
-                  <Button
-                    onClick={() => console.log("clicked")}
-                    variant="ghost"
-                  >
-                    Membership 3
+                  <Button onClick={() => push("membership")} variant="ghost">
+                    Edu
                   </Button>
                 </Flex>
               </AccordionPanel>
@@ -232,11 +234,8 @@ const ButtonGroupMobile = ({ session }: { session?: Session }) => {
           <Button variant="ghost">Community</Button>
           <Button variant="ghost">Carrier</Button>
           <Button variant="fill">Contact Us</Button>
-          {session ? (
-            <Text>Hello, {session.user.name?.split(" ")[0]} </Text>
-          ) : (
-            <Button variant="outline">Sign In</Button>
-          )}
+
+          <SignInBtn />
         </MenuList>
       </Menu>
     </>
