@@ -169,6 +169,7 @@ export default function Home() {
     <>
       <PublicLayout>
         <Flex flexDir="column" px={["1em", "4em"]}>
+          <Img src="/main-icon.webp" width="0px" height="0px"/>
           {/* FRONT SECTION */}
           <Slide from="left" duration={0.5}>
             <FlexResponsive pb="3em">
